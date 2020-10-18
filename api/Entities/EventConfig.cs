@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace NaftaScheduler
 {
@@ -34,5 +35,10 @@ namespace NaftaScheduler
             + $"\n\r\tendDate: {this.endDate},"
             + $"\n\r\tIsActive: {this.IsActive},"
             + "\n\r}";
+
+        public static implicit operator EventConfig(List<EventConfig> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

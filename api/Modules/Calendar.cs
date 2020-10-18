@@ -45,14 +45,15 @@ namespace NaftaScheduler
             Event createdEvent = Service.Events.Insert(e, "primary").Execute();
             return createdEvent.Id;
         }
-        public void AttendUser(string id, List<UserConfig> users)
+        public Event getEvent(string id)
         {
-            var attendees = new List<EventAttendee>();
-            foreach (var user in users)
-            {
-                attendees.Add(new EventAttendee() { Email = user.Name });
-            }
-            Event e = new Event { Attendees = attendees };
+            var response = this.Service.Events.Get("primary", id).Execute();
+            return response;
+        }
+        public void AttendUser(string id, UserConfig user)
+        {
+            var e = this.getEvent(id);
+            e.Attendees.Add(new EventAttendee() { Email = user.Name });
             this.Service.Events.Patch(e, "primary", id).Execute();
         }
         public void UpdateEvent(string id, EventConfig e)

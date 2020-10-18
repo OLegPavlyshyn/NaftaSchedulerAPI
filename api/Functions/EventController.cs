@@ -20,12 +20,9 @@ namespace Company.Function
             CreateLeaseCollectionIfNotExists= true)]IReadOnlyList<Document> documents, ILogger log,
             ExecutionContext context)
         {
-            var users = new List<UserConfig>();
-            users.Add(new UserConfig()
-            {
-                Name = "oleg.pawl@gmail.com",
-                GroupId = "Kim-20-1(2)"
-            });
+            CosmosDBClient usersClient = new CosmosDBClient("users");
+            List<UserConfig> users = await usersClient.QueryItemsAsync<UserConfig>();
+
             Calendar calendar = new Calendar(context.FunctionAppDirectory);
             log.LogInformation("Inneted calendar.");
             CosmosDBClient client = new CosmosDBClient("events");

@@ -45,6 +45,10 @@ namespace NaftaScheduler
         {
             await this.container.DeleteItemAsync<T>(documentToUpdateId.ToString(), new PartitionKey(partitionKey));
         }
-
+        public async Task<T> ExecProcAsync<T>(string procedureId, string partionkeyValue, dynamic[] parameters)
+        {
+            var response = await this.container.Scripts.ExecuteStoredProcedureAsync<T>(procedureId, new PartitionKey(partionkeyValue), parameters);
+            return response;
+        }
     }
 }
