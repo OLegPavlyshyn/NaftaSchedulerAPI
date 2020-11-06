@@ -11,9 +11,9 @@ using System.Linq;
 
 namespace NaftaScheduler
 {
-    public static class ParseSchedule
+    public static class EventParser
     {
-        [FunctionName("ParseSchedule")]
+        [FunctionName("EventParser")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log,

@@ -39,11 +39,11 @@ namespace NaftaScheduler
                         var user = new UserConfig()
                         {
                             Name = email,
-                            GroupId = "Kim-20-1"
+                            groupID = "Kim-20-1"
                         };
                         try
                         {
-                            var res = await client.ExecProcAsync<string>("addUser", user.GroupId, new object[] { user });
+                            var res = await client.ExecProcAsync<string>("addUser", user.groupID, new object[] { user });
                             return new OkObjectResult(res);
                         }
                         catch (System.Exception e)
@@ -59,7 +59,7 @@ namespace NaftaScheduler
                             var user = await client.QueryItemsAsync<UserConfig>($"SELECT * FROM c WHERE c.Name = '{email}'");
                             if (user.Count > 0)
                             {
-                                await client.DeleteItemAsync<UserConfig>(user[0].id, user[0].GroupId);
+                                await client.DeleteItemAsync<UserConfig>(user[0].id, user[0].groupID);
                                 log.LogInformation($"User {user[0].Name} has been removed");
                                 return new OkObjectResult($"User {user[0].Name} has been removed");
                             }

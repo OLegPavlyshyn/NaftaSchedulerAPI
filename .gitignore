@@ -270,3 +270,4 @@ __pycache__/
 /api/configs
 /api/host.json
 /api/common/UsersSample.cs
+/deploy/NaftaSchedulerAPI.template.json

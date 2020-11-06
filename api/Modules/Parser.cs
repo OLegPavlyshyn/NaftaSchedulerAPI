@@ -34,7 +34,6 @@ namespace NaftaScheduler
             var eventList = new List<EventConfig>();
             int c = 0;
             string date = "";
-
             foreach (int j in indexes)
             {
                 if (cells[j - 2].TextContent == "1")

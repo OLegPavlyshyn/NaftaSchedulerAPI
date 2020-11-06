@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "naftaschedulerfa"
+        },
+        "hostingPlanName": {
+            "value": "ASP-naftaschedulerapi-970b"
+        },
+        "storageAccountName": {
+            "value": "storageaccountnafta801d"
+        },
+        "cosmosDBAccountName": {
+            "value": "naftaschedulercosmos"
+        }
+    }
+}
